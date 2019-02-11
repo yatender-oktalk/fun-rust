@@ -18,6 +18,7 @@ fn main() {
 
     let guess: u32 = guess.trim().parse()
         .expect("please provide a number not some random shit");
+        
     println!("You guessed: {}", guess);
 
     match guess.cmp(&secret_number) {
