@@ -18,14 +18,20 @@ fn main() {
     println!("{}", s3);
 
 
-    let _s4 = gives_ownership();
+    let mut s4 = gives_ownership();
     let s5 = String::from("hello");
     let s6 = take_and_gives_back(s5);
-    let (_s7, _len) = calculate_length(s6);
+    let (s7, _len) = calculate_length(s6);
+    let len = calculate_length_reference(&s7);
+    println!("{}", len);
+
+
+    change(&mut s4);
+    println!("{}", s4)
 }
 
 fn gives_ownership() -> String {
-    let some_string = String::from("hello");
+    let mut some_string = String::from("hello brother!");
     some_string
 }
 
@@ -36,4 +42,12 @@ fn take_and_gives_back(a_string: String) -> String {
 fn calculate_length(s: String) -> (String, usize) {
     let length = s.len();
     (s, length)
+}
+
+fn calculate_length_reference(s: &String) -> usize {
+    s.len()
+}
+
+fn change(some_string: &mut String) {
+   some_string.push_str(", world");
 }
