@@ -20,7 +20,8 @@ fn main() {
 
     let _s4 = gives_ownership();
     let s5 = String::from("hello");
-    let _s6 = take_and_gives_back(s5);
+    let s6 = take_and_gives_back(s5);
+    let (_s7, _len) = calculate_length(s6);
 }
 
 fn gives_ownership() -> String {
@@ -30,4 +31,9 @@ fn gives_ownership() -> String {
 
 fn take_and_gives_back(a_string: String) -> String {
     a_string
+}
+
+fn calculate_length(s: String) -> (String, usize) {
+    let length = s.len();
+    (s, length)
 }
