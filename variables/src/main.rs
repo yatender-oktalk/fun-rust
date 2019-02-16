@@ -32,6 +32,7 @@ fn main() {
     let s9 = dangle();
     println!("{}", s9);
 
+    // slices
     let mut s10 = String::from("yo man how are you?");
     let length = first_word(&s10);
     println!("{}", length);
@@ -59,6 +60,13 @@ fn main() {
     println!("{}", bro_full);
     println!("{}", bro_full_l);
     println!("brother legnth {}", l);
+
+    // other slices
+    let a = [1,2,3,4,5,5];
+    // let slice = &a[..2];
+    println!("{}", a[2]);
+
+
 }
 
 fn gives_ownership() -> String {
