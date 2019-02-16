@@ -37,7 +37,14 @@ fn main() {
     println!("{}", length);
 
     s10.clear();
+
     let s11 = gives_ownership();
+    let f_word = first_word_slice(&s11);
+    println!("sparta {}", f_word);
+
+    let f2_word = second_word_slice(&s11);
+    println!("second {}", f2_word);
+
     let hello = &s11[0..=4];
     let brother = &s11[6..14];
     let brot = &s11[..14];
@@ -93,3 +100,25 @@ fn first_word(s: &String) -> usize {
     s.len()
 }
 
+// this method gives back the reference of the substring
+fn first_word_slice(s: &String) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..i];
+        }
+    }
+
+    &s[..]
+}
+
+fn second_word_slice(s: &String) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[i+1..];
+        }
+    }
+
+    &s[..]
+}
