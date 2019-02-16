@@ -37,6 +37,11 @@ fn main() {
     println!("{}", length);
 
     s10.clear();
+    let s11 = gives_ownership();
+    let hello = &s11[0..=4];
+    let brother = &s11[6..14];
+    println!("{}", hello);
+    println!("{}", brother);
 }
 
 fn gives_ownership() -> String {
