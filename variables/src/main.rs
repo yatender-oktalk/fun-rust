@@ -31,6 +31,12 @@ fn main() {
 
     let s9 = dangle();
     println!("{}", s9);
+
+    let mut s10 = String::from("yo man how are you?");
+    let length = first_word(&s10);
+    println!("{}", length);
+
+    s10.clear();
 }
 
 fn gives_ownership() -> String {
@@ -55,7 +61,20 @@ fn change(some_string: &mut String) {
    some_string.push_str(", world");
 }
 
-fn dangle() -> &String {
+fn dangle() -> String {
     let dangle_str = String::from("Hello bros");
-    &dangle_str
+    dangle_str
 }
+
+
+fn first_word(s: &String) -> usize {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
+
+    s.len()
+}
+
