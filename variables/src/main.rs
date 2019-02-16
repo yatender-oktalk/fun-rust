@@ -27,11 +27,14 @@ fn main() {
 
 
     change(&mut s4);
-    println!("{}", s4)
+    println!("{}", s4);
+
+    let s9 = dangle();
+    println!("{}", s9);
 }
 
 fn gives_ownership() -> String {
-    let mut some_string = String::from("hello brother!");
+    let some_string = String::from("hello brother!");
     some_string
 }
 
@@ -50,4 +53,9 @@ fn calculate_length_reference(s: &String) -> usize {
 
 fn change(some_string: &mut String) {
    some_string.push_str(", world");
+}
+
+fn dangle() -> &String {
+    let dangle_str = String::from("Hello bros");
+    &dangle_str
 }
