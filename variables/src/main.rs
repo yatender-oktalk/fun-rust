@@ -40,8 +40,18 @@ fn main() {
     let s11 = gives_ownership();
     let hello = &s11[0..=4];
     let brother = &s11[6..14];
+    let brot = &s11[..14];
+    let bro = &s11[0..];
+    let l = s11.len();
+    let bro_full = &s11[..];
+    let bro_full_l = &s11[0..l];
     println!("{}", hello);
     println!("{}", brother);
+    println!("{}", bro);
+    println!("{}", brot);
+    println!("{}", bro_full);
+    println!("{}", bro_full_l);
+    println!("brother legnth {}", l);
 }
 
 fn gives_ownership() -> String {
