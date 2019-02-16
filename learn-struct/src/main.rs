@@ -6,6 +6,9 @@ struct User {
     phone: String,
 }
 
+struct Color(u8, u8, u8);
+struct Point(u8, u8, u8);
+
 fn main() {
     println!("Hello, world!");
 
@@ -35,6 +38,12 @@ fn main() {
     println!("{}", user1.email);
     println!("{}", user2.email);
     println!("{}", user3.email);
+
+
+    let black = Color(60, 3, 5);
+    let origin = Point(50, 30, 10);
+    println!("{}", black.0);
+
 }
 
 fn build_user(email: String, phone: String, username: String) -> User {
