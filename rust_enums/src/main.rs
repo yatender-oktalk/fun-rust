@@ -14,6 +14,11 @@ enum Ipadd {
     v6(String),
 }
 
+enum Ipadd2 {
+    v4(u8,u8,u8,u8),
+    v6(String),
+}
+
 fn main() {
     println!("Hello, world!");
     let four = IpAddrKind::v4;
@@ -31,6 +36,9 @@ fn main() {
 
     let home2 = Ipadd::v4(String.from("127.0.0.1"));
     let loopback2 = Ipadd::v6(String.from("::1"));
+
+    let home3 = Ipadd2::v4(127, 0, 0, 1);
+    let loopback3 = Ipadd2::v6(String.from("::1"));
 }
 
 // this will accept both kind
