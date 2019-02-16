@@ -15,6 +15,24 @@ struct Rectangle {
     width: u32,
 }
 
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    fn hello(&self) -> () {
+         println!("fizzbuzz");
+    }
+
+     fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+
+    fn square(size: u32) -> Rectangle {
+        Rectangle {width: size, height: size}
+    }
+}
+
 fn main() {
     println!("Hello, world!");
 
@@ -62,6 +80,15 @@ fn main() {
     //to print the whole struct type enable derive debug and add {:?} format
     // & pass any struct type
     println!("area {:?}", rect);
+
+    // using impl
+    let r = Rectangle {width: 30, height: 40};
+    let rect2 = Rectangle { width: 10, height: 40 };
+    println!("The area of rectangle is {} sq pixels", r.area());
+    println!("Doing hello {:?} ", r.hello());
+    println!("Can rect1 hold rect2? {}", r.can_hold(&rect2));
+    let sq = Rectangle::square(3);
+    println!("{:?}", sq);
 }
 
 fn build_user(email: String, phone: String, username: String) -> User {
