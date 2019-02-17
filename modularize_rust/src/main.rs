@@ -1,3 +1,5 @@
+use std::collections;
+
 mod sound{
 
     pub mod instrument {
@@ -21,6 +23,9 @@ mod sound{
 }
 
 use sound::instrument::woodwind;
+use rand::Rng;
+// nested path for dependencies
+use std::{cmp::Ordering, io};
 
 fn breathe_in() -> (){
     println!("breathe_in goes here")
@@ -33,4 +38,12 @@ fn main() {
     crate::sound::instrument::guitar();
     woodwind::clarinet();
     sound::voice::guitar();
+
+    let mut map = collections::HashMap::new();
+    map.insert("1",2);
+    map.insert("items",2);
+
+    println!("{:?}", map);
+    let secret_number = rand::thread_rng().gen_range(1,101);
+    println!("{}", secret_number);
 }
