@@ -21,4 +21,8 @@ fn main() {
         Some(third) => println!("The third element is {}", third),
         None => println!("There is no third element."),
     }
+
+    for i in &v {
+        print!("{} ", i);
+    }
 }
