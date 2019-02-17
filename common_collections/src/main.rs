@@ -12,7 +12,13 @@ fn main() {
     v.push(7);
     v.push(8);
 
-    println!("{:?}", v);
+    println!("{:?}", &v);
 
-    
+    let third: &i32 = &v[2];
+    println!("The third element is {}", third);
+
+    match v.get(2) {
+        Some(third) => println!("The third element is {}", third),
+        None => println!("There is no third element."),
+    }
 }
