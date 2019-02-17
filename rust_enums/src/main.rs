@@ -19,6 +19,34 @@ enum Ipadd2 {
     v6(String),
 }
 
+struct QuitMessage;
+struct MoveMessage {
+    x: i32,
+    y: i32,
+}
+struct WriteMessage {String};
+struct ChangeColorMessage(i32, i32, i32);
+
+// above four are similar to defining as different-2 structs
+enum Message {
+    Quit,
+    Move {x: i32, y: i32},
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+impl Message {
+    fn call(&self) {
+        // method body here
+    }
+}
+
+#[derive(Debug)]
+enum Option<T> {
+    Some(T),
+    None,
+}
+
 fn main() {
     println!("Hello, world!");
     let four = IpAddrKind::v4;
@@ -39,6 +67,10 @@ fn main() {
 
     let home3 = Ipadd2::v4(127, 0, 0, 1);
     let loopback3 = Ipadd2::v6(String.from("::1"));
+
+    let some_num = Some(5);
+    let some_string = Some("A string");
+    let absent_num = Option<i32> = None;
 }
 
 // this will accept both kind
