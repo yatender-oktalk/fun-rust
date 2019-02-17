@@ -1,4 +1,10 @@
-enum Coin{
+enum UsState {
+    Alabama,
+    Alaska,
+    California,
+}
+
+enum Coin {
     Penny,
     Nickel,
     Dime,
@@ -7,24 +13,27 @@ enum Coin{
 
 fn main() {
     println!("Hello, world!");
+    let coin = Coin::Quarter;
+    let value = value_in_cents(coin);
+    println!("{}", value);
 }
 
 fn value_in_cents(coin: Coin) -> u32 {
     match coin {
-        Coin::Penny =>1 {
-            println!("Luckey ");
+        Coin::Penny => {
+            println!("Lucky Penny");
             1
         },
-        Coin::Nickel =>5 {
-            println!("Luckey Nickel");
+        Coin::Nickel => {
+            println!("Lucky Nickel");
             5
         },
-        Coin::Dime =>10 {
-            println!("Luckey Dime");
+        Coin::Dime => {
+            println!("Lucky Dime");
             10
         },
-        Coin::Quarter =>25 {
-            println!("Luckey Quarter");
+        Coin::Quarter => {
+            println!("Lucky Quarter");
             25
         },
     }
