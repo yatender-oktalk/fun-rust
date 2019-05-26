@@ -1,3 +1,4 @@
+use rand::Rng;
 
 fn main() {
     let mut x: u32 = 5;
@@ -5,18 +6,26 @@ fn main() {
     x = 6;
     println!("The value of x is: {}", x);
 
-    let mut s = String::from("hello how are you");
-    s.push_str(", world!");
-    s.push('w');
-    println!("{}", s);
+    let mut str = String::from("Hello ");
+    str.push_str("world!");
+    str.push_str(", This is nice!");
+
+    println!("{}", str);
+
+    let random_number = rand::thread_rng().gen_range(1, 99);
+    if random_number % 2 == 0 {
+        println!("even number generated");
+    }else {
+        println!("odd number generated");
+    }
 
     let s1 = String::from("hello");
+
     let s2 = s1;
     println!("{}", s2);
 
     let s3 = s2.clone();
     println!("{}", s3);
-
 
     let mut s4 = gives_ownership();
     let s5 = String::from("hello");
