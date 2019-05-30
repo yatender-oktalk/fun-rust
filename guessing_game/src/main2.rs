@@ -1,38 +1,22 @@
-use std::io;
-use std::cmp::Ordering;
-use rand::Rng;
-
 fn main() {
-    println!("Guess the number!");
+    let x = get_tuple();
+    let number: u32 = 5;
+    let n = is_greater(number);
+    println!("{}", n);
+    println!("{}, {}", x.1, x.0);
+}
 
-    // generate random number
-    let secret_number = rand::thread_rng().gen_range(1000, 9999);
+fn get_tuple() -> (f32, &'static str) {
+    (5.0, "yatender")
+}
 
-    println!("The secret number is: {}", secret_number);
-
-    loop {
-        println!("Please input your guess.");
-
-        let mut guess = String::new();
-
-        io::stdin().read_line(&mut guess)
-        .expect("could not read please retry");
-
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-
-        println!("You guessed: {}", guess);
-
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => {
-                println!("You win!");
-                break;
-            }
-        }
+fn is_greater(num: u32) -> &'static str {
+    println!("{}", num);
+     match num {
+        Some(num) if num < 10 =>
+        "greater than 10",
+        _ =>
+        "less than 10",
     }
 }
 

@@ -1,10 +1,19 @@
-use std::io;
-
 fn main() {
-    println!("Please guess the number");
-    let mut guess = String::new();
-    io::stdin().read_line(&mut guess)
-    .expect("Input error");
+    let mut m: isize = 8;
+    let mut n: isize = 2;
 
-    println!("You guessed {}", guess);
+    let resp = calculate_gcd(&mut m, &mut  n);
+    println!("{}", resp);
+
+}
+
+fn calculate_gcd(m: &mut isize,  n: &mut isize) -> isize {
+    loop {
+        let rem = *m % *n;
+        *m = *n;
+        *n = rem;
+        if *n == 0 {
+            break *m
+        }
+    }
 }
