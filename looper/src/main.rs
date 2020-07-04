@@ -1,6 +1,7 @@
 fn main() {
     println!("Hello, world!");
     loop10();
+    loopfor(5);
 }
 
 fn loop10() {
@@ -14,3 +15,8 @@ fn loop10() {
     }
 }
 
+fn loopfor(n: i32) {
+    for i in 0..n {
+        println!("{} yo", i);
+    }
+}
