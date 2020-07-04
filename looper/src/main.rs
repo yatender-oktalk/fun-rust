@@ -3,6 +3,7 @@ fn main() {
     loop_10();
     loop_for(5);
     array_loop();
+    nested_loop();
 }
 
 fn loop_10() {
@@ -25,10 +26,28 @@ fn loop_for(n: i32) {
 fn array_loop() {
     let mut v = Vec::new();
     for i in 0..90 {
-        v.push(i)
+        if i % 2 == 0 {
+            v.push(i);
+        }
     }
 
     for n in v {
-        println!("{}", n)
+        println!("{}", n);
     }
+}
+
+
+fn nested_loop(){
+  let v = vec![4,5,6,22,45,345];
+
+  'outer: for i in 0..10 {
+    // here we have to iterate over pointer to v
+    //  as when we use v , we lose access to v
+    for n in &v {
+      if i + n == 11 {
+        break 'outer;
+      }
+      println!("{}", n);
+    }
+  }
 }
