@@ -1,6 +1,8 @@
 use std::ops::Add;
+use rand::Rng;
+extern crate rand;
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub struct Point {
     x:i32,
     y:i32,
@@ -16,6 +18,16 @@ impl Add for Point {
     }
 }
 
+impl for Point{
+    fn random() -> Self{
+        let tr = rand::thread_rng();
+        Point{
+            x: tr.gen(),
+            y: tr.gen(),
+        }
+    }
+}
+
 fn main() {
     println!("Hello, world!");
     let x1 = Point{x: 3, y: 4};
@@ -23,5 +35,8 @@ fn main() {
 
     let result_point = x1 + x2;
 
-    println!("{:?}", result_point)
+    println!("{:?}", result_point);
+
+    let d = Point::random();
+    println!("d {:?}", d);
 }
