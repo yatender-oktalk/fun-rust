@@ -15,10 +15,7 @@ fn main() {
     };
 
     println!("{}", r);
-    
-    
     let x = hm.get(&3).unwrap_or(&"No String");
-    
     println!("{}", x);
 
     match get_arg(3) {
@@ -27,11 +24,10 @@ fn main() {
     };
 }
 
-
-fn get_arg(n:usize) -> Result<String, String> {
+fn get_arg(n: usize) -> Result<String, String> {
     for (i, a) in args().enumerate() {
-        if i ==n {
-            return Ok(a)
+        if i == n {
+            return Ok(a);
         }
     }
     Err("Not enough Args".to_string())

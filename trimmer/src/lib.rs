@@ -8,12 +8,15 @@ pub fn trim_left(s: &str) -> &str {
     ""
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
     #[test]
     fn it_works() {
         assert_eq!(trim_left("   hello"), "hello");
+    }
+    #[test]
+    fn it_does_not_work() {
+        assert_eq!(trim_left("   hello"), " hello");
     }
 }
