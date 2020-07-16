@@ -1,6 +1,8 @@
 fn main() {
     let mut v: Vec<i32> = Vec::new();
     push_in_list(&mut v, 23);
+    push_in_list(&mut v, 33);
+    push_in_list(&mut v, 53);
     println!("{:?}", v);
 }
 
