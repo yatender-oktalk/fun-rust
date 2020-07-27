@@ -18,7 +18,7 @@ impl Add for Point {
     }
 }
 
-impl for Point {
+impl random for Point {
     fn random() -> Self {
         let tr = rand::thread_rng();
         Point {
