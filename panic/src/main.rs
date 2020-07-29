@@ -17,15 +17,19 @@ use std::io::ErrorKind;
 //     };
 // }
 
+// fn main() {
+//     let f = File::open("hello.txt");
+//     let _f = File::open("hello.txt").unwrap_or_else(|error| {
+//         if error.kind() == ErrorKind::NotFound {
+//             File::create("hello.txt").unwrap_or_else(|error| {
+//                 panic!("{:?}", error);
+//             })
+//         } else {
+//             panic!("problem in opening in file {:?}", error)
+//         }
+//     });
+// }
+
 fn main() {
-    let f = File::open("hello.txt");
-    let _f = File::open("hello.txt").unwrap_or_else(|error| {
-        if error.kind() == ErrorKind::NotFound {
-            File::create("hello.txt").unwrap_or_else(|error| {
-                panic!("{:?}", error);
-            })
-        } else {
-            panic!("problem in opening in file {:?}", error)
-        }
-    });
+    let f = File::open("hello.txt").expect("File not found");
 }
