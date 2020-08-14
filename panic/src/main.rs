@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::ErrorKind;
+use std::io;
 
 // fn main() {
 //     let f = File::open("hello.txt");
@@ -31,5 +31,21 @@ use std::io::ErrorKind;
 // }
 
 fn main() {
-    let f = File::open("hello.txt").expect("File not found");
+    let x = read_username_from_file();
+}
+
+fn read_username_from_file() -> Result<String, io::Error> {
+    let f = File::open("hello.txt");
+
+    let mut f = match f {
+        Ok(file) => file,
+        Error(err) => return Err(err),
+    };
+
+    let mut e = String::new();
+
+    match f.read_to_string(&mut String) {
+        Ok(_) => s,
+        Err(e) => Err(e),
+    }
 }
