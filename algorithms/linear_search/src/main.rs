@@ -21,6 +21,16 @@ fn largest_char(list: &[char]) -> char {
     largest
 }
 
+fn largest<T>(list: &[T]) -> T {
+    let mut largest = list[0];
+    for &item in list {
+        if item > largest {
+            largest = item;
+        }
+    }
+    largest
+}
+
 fn main() {
     let number_list = vec![34, 50, 67, 89, 11, 23];
     let result = largest_i32(&number_list);
@@ -30,4 +40,8 @@ fn main() {
 
     let result = largest_char(&char_list);
     println!("the largest char is {}", result);
+
+    let number_list_new = vec![34, 40, 45, 67, 33, 88];
+    let result = largest(&number_list_new);
+    println!("{}", result);
 }
