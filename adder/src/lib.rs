@@ -14,6 +14,19 @@ pub fn greetings(name: &str) -> String {
     format!("hello {}", name)
 }
 
+pub struct Guess {
+    value: i32,
+}
+
+impl Guess {
+    pub fn new(value: i32) -> Guess {
+        if value < 1 || value > 100 {
+            panic!("please give value between 1 to 100 but you gave {}", value)
+        }
+        Guess { value }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
