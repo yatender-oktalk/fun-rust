@@ -21,6 +21,14 @@ fn largest_char(list: &[char]) -> char {
   largest
 }
 
+fn longest<'a>(a: &'a str, b: &'a str) -> &'a str {
+  if a.len() > b.len() {
+    a
+  } else {
+    b
+  }
+}
+
 fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
   let mut largest = list[0];
   for &item in list {
@@ -44,4 +52,8 @@ fn main() {
   let number_list_new = vec![34, 40, 45, 67, 33, 88];
   let result = largest(&number_list_new);
   println!("{}", result);
+
+  let s1 = String::from("abcdefgh");
+  let s2 = String::from("abcd");
+  println!("{}", longest(&s1, &s2))
 }
