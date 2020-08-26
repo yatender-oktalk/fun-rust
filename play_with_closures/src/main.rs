@@ -8,22 +8,21 @@ fn main() {
 }
 
 fn generate_workout(intensity: u32, random_number: u32) {
-    let expensive_result = simulated_expensive_calculation(intensity);
+    let expensive_result = |num| {
+        println!("Doing some expensive calculation and generating your workout plan");
+        thread::sleep(Duration::from_secs(num));
+        intensity
+    };
 
     if intensity < 25 {
-        println!("Today do {} pushups", expensive_result);
-        println!("After that do {} situps", expensive_result);
+        let result = expensive_result(3);
+        println!("Today do {} pushups", result);
+        println!("After that do {} situps", result);
     } else {
         if random_number == 3 {
             println!("Take a break today! Remember to stay hydrated");
         } else {
-            println!("Today do cardio for {} minutes", expensive_result);
+            println!("Today do cardio for {} minutes", expensive_result(1));
         }
     }
-}
-
-fn simulated_expensive_calculation(intensity: u32) -> u32 {
-    println!("Doing some expensive calculation and generating your workout plan");
-    thread::sleep(Duration::from_secs(3));
-    intensity
 }
