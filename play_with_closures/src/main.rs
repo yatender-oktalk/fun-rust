@@ -8,7 +8,7 @@ fn main() {
 }
 
 fn generate_workout(intensity: u32, random_number: u32) {
-    let expensive_result = |num| {
+    let expensive_result = |num: u64| -> u32 {
         println!("Doing some expensive calculation and generating your workout plan");
         thread::sleep(Duration::from_secs(num));
         intensity
