@@ -39,21 +39,32 @@ fn main() {
 }
 
 fn generate_workout(intensity: u32, random_number: u32) {
-  let expensive_result = |num: u64| -> u32 {
+  let mut expensive_result = Cacher::new(|num| {
     println!("Doing some expensive calculation and generating your workout plan");
-    thread::sleep(Duration::from_secs(num));
-    intensity
-  };
+    thread::sleep(Duration::from_secs(3));
+    num
+  });
 
   if intensity < 25 {
-    let result = expensive_result(3);
+    let result = expensive_result.value(intensity);
     println!("Today do {} pushups", result);
     println!("After that do {} situps", result);
   } else {
     if random_number == 3 {
       println!("Take a break today! Remember to stay hydrated");
     } else {
-      println!("Today do cardio for {} minutes", expensive_result(1));
+      println!(
+        "Today do cardio for {} minutes",
+        expensive_result.value(intensity)
+      );
     }
   }
+}
+
+#[test]
+fn call_with_different_values() {
+  let mut c = Cacher::new(|a| a);
+  let v1 = c.value(1);
+  let v2 = c.value(2);
+  assert_eq!(v2, 2);
 }
